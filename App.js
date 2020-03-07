@@ -1,18 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState('shaun');
+  const [person, setPerson] = useState({name: 'Mario', age: 12});
+  const pressHandler = () =>{
+    setName('Muhammad Ali');
+    setPerson( {name:'Luigi',age: 20});
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello, World</Text>
-      </View>
-      <View style={styles.body}>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-      </View>
+        <Text>My name is {name}</Text>
+        <Text>His name is {person.name} and his age is {person.age}</Text> 
+        <View style={styles.bottomContainer}>
+          <Button onPress={pressHandler} title='update name'/>
+        </View>
     </View>
   );
 }
@@ -37,5 +40,8 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor:'yellow',
     padding: 20
+  },
+  bottomContainer: {
+    marginTop: 20
   }
 });
