@@ -1,31 +1,29 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function App() {
   const [people, setPeople] = useState([
-    {name : 'hello', key:1 },
-    {name : 'test', key:2 },
-    {name : 'test1', key:3 },
-    {name : 'test2', key:4 },
-    {name : 'test3', key:5 },
-    {name : 'test4', key:6 },
-    {name : 'test5', key:7 },
-    {name : 'test6', key:8 },
+    {name : 'hello', id:1 },
+    {name : 'test', id:2 },
+    {name : 'test1', id:3 },
+    {name : 'test2', id:4 },
+    {name : 'test3', id:5 },
+    {name : 'test4', id:6 },
+    {name : 'test5', id:7 },
+    {name : 'test6', id:8 },
   ]);
 
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {
-          people.map(person =>(
-              <View key={person.key}>
-                <Text style={styles.item}> {person.name}</Text>
-              </View>          
-            )
-          )
-        }
-      </ScrollView>      
+     <FlatList 
+        numColumns={2}
+        keyExtractor={ (item)=>{ return item.id}}
+        data={people}
+        renderItem= {({ item })=> (
+          <Text style={styles.item}> { item.name }</Text>
+        )}
+     />
     </View>
   );
 }
@@ -36,14 +34,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 40,
     paddingHorizontal:20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   item: {
     marginTop:24,
     padding:30,
     backgroundColor: 'pink',
-    fontSize:24
+    fontSize:24,
+    marginHorizontal:10,
+    marginTop:24
   }
   
 });
