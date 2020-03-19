@@ -34,7 +34,6 @@ export default function App() {
     }   
   }
   return (
-    // <Sandbox />
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss();
     }}> 
@@ -63,13 +62,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content:{
-    backgroundColor: 'lightyellow',
     padding:40,
     flex:1,
   },
   list: {
     flex:1,
-    marginTop:20,
-    backgroundColor:'pink'
+    marginTop:20 
   }
 });
